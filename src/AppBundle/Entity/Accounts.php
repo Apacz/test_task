@@ -13,16 +13,17 @@ use Doctrine\Common\Collections\ArrayCollection;
  * indexes={@ORM\Index(name="status", columns={"status"})}
  * )
  * @ORM\Entity
- * @ORM\ChangeTrackingPolicy("DEFERRED_EXPLICIT")
- * @ORM\HasLifecycleCallbacks
+ *
+ *
+ *
  */
 class Accounts
 {
 
     public function __construct() {
 
-        $this->orderStats = new ArrayCollection();
-        $this->reports = new ArrayCollection();
+//        $this->orderStats = new ArrayCollection();
+//        $this->reports = new ArrayCollection();
         $this->campaigns = new ArrayCollection();
     }
 
@@ -135,7 +136,7 @@ class Accounts
     private $cpr;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Sku", mappedBy="accounts")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Sku", mappedBy="accounts", fetch="EXTRA_LAZY")
      **/
     private $skus;
 
@@ -550,36 +551,36 @@ class Accounts
     }
 
     /**
-     * @param mixed $orderStats
-     */
-    public function setOrderStats($orderStats)
-    {
-        $this->orderStats = $orderStats;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getOrderStats()
-    {
-        return $this->orderStats;
-    }
-
-    /**
-     * @param mixed $reports
-     */
-    public function setReports($reports)
-    {
-        $this->reports = $reports;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getReports()
-    {
-        return $this->reports;
-    }
+//     * @param mixed $orderStats
+//     */
+//    public function setOrderStats($orderStats)
+//    {
+//        $this->orderStats = $orderStats;
+//    }
+//
+//    /**
+//     * @return mixed
+//     */
+//    public function getOrderStats()
+//    {
+//        return $this->orderStats;
+//    }
+//
+//    /**
+//     * @param mixed $reports
+//     */
+//    public function setReports($reports)
+//    {
+//        $this->reports = $reports;
+//    }
+//
+//    /**
+//     * @return mixed
+//     */
+//    public function getReports()
+//    {
+//        return $this->reports;
+//    }
 
     /**
      * @param mixed $isCurrent
@@ -840,53 +841,53 @@ class Accounts
 
 
 
-    /**
-     * Add orderStat
-     *
-     * @param \OrderStats $orderStat
-     *
-     * @return Accounts
-     */
-    public function addOrderStat(\OrderStats $orderStat)
-    {
-        $this->orderStats[] = $orderStat;
+//    /**
+//     * Add orderStat
+//     *
+//     * @param \OrderStats $orderStat
+//     *
+//     * @return Accounts
+//     */
+//    public function addOrderStat(\OrderStats $orderStat)
+//    {
+//        $this->orderStats[] = $orderStat;
+//
+//        return $this;
+//    }
+//
+//    /**
+//     * Remove orderStat
+//     *
+//     * @param \OrderStats $orderStat
+//     */
+//    public function removeOrderStat(\OrderStats $orderStat)
+//    {
+//        $this->orderStats->removeElement($orderStat);
+//    }
 
-        return $this;
-    }
-
-    /**
-     * Remove orderStat
-     *
-     * @param \OrderStats $orderStat
-     */
-    public function removeOrderStat(\OrderStats $orderStat)
-    {
-        $this->orderStats->removeElement($orderStat);
-    }
-
-    /**
-     * Add report
-     *
-     * @param \Report $report
-     *
-     * @return Accounts
-     */
-    public function addReport(\Report $report)
-    {
-        $this->reports[] = $report;
-
-        return $this;
-    }
-
-    /**
-     * Remove report
-     *
-     * @param \Report $report
-     */
-    public function removeReport(\Report $report)
-    {
-        $this->reports->removeElement($report);
-    }
+//    /**
+//     * Add report
+//     *
+//     * @param \Report $report
+//     *
+//     * @return Accounts
+//     */
+//    public function addReport(\Report $report)
+//    {
+//        $this->reports[] = $report;
+//
+//        return $this;
+//    }
+//
+//    /**
+//     * Remove report
+//     *
+//     * @param \Report $report
+//     */
+//    public function removeReport(\Report $report)
+//    {
+//        $this->reports->removeElement($report);
+//    }
 
     /**
      * Add skus
@@ -895,7 +896,7 @@ class Accounts
      *
      * @return Accounts
      */
-    public function addSkus(\Sku $skus)
+    public function addSkus(Sku $skus)
     {
         $this->skus[] = $skus;
 
@@ -907,7 +908,7 @@ class Accounts
      *
      * @param \Sku $skus
      */
-    public function removeSkus(\Sku $skus)
+    public function removeSkus(Sku $skus)
     {
         $this->skus->removeElement($skus);
     }

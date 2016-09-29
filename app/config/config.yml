@@ -85,6 +85,7 @@ doctrine:
         auto_generate_proxy_classes: "%kernel.debug%"
         auto_mapping: true
 
+
 # Swiftmailer Configuration (used to send emails)
 swiftmailer:
     transport: "%mailer_transport%"

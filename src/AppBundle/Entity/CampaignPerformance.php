@@ -9,13 +9,14 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="campaign_performance",
  * * indexes={
+ *     @ORM\Index(name="start_date1", columns={"start_date"}),
  * @ORM\Index(name="start_date", columns={"start_date", "accounts"}),
  * @ORM\Index(name="start_date_match", columns={"start_date", "accounts", "match_type"}),
  * @ORM\Index(name="keyword", columns={"keyword", "accounts"}),
  * @ORM\Index(name="account", columns={"accounts"}),
  * })
- * @ORM\Entity(repositoryClass="CampaignPerformanceRepository") @ORM\HasLifecycleCallbacks
- * @ORM\HasLifecycleCallbacks
+ * @ORM\Entity(repositoryClass="CampaignPerformanceRepository")
+ * @ORM\CACHE()
  */
 class CampaignPerformance extends Common
 {
@@ -93,7 +94,7 @@ class CampaignPerformance extends Common
     /**
      * @var \AppBundle\Entity\Accounts
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Accounts", inversedBy="cpr")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Accounts", inversedBy="cpr" )
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="accounts", referencedColumnName="id")
      * })
@@ -103,7 +104,7 @@ class CampaignPerformance extends Common
     /**
      * @var \AppBundle\Entity\Adgroups
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Adgroups")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Adgroups" , fetch="EAGER")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="adgroup", referencedColumnName="id")
      * })
@@ -113,7 +114,7 @@ class CampaignPerformance extends Common
     /**
      * @var \AppBundle\Entity\Sku
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Sku", inversedBy="campaignPerformance")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Sku", inversedBy="campaignPerformance", fetch="EAGER")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="sku", referencedColumnName="id")
      * })

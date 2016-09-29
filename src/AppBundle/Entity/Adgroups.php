@@ -6,10 +6,9 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Adgroups
- *
+ * @ORM\Table(name="adgroups", indexes={@ORM\Index(name="ad_name", columns={"name"})})
  * @ORM\Entity
- * @ORM\Entity(repositoryClass="AdgroupsRepository") @ORM\HasLifecycleCallbacks
-
+ * @ORM\Entity(repositoryClass="AdgroupsRepository")
  */
 class Adgroups extends Common
 {
@@ -385,30 +384,30 @@ class Adgroups extends Common
      *
      * @return Adgroups
      */
-    public function addSearchTerm(\AppBundle\Entity\SearchTerm $searchTerm)
-    {
-        $this->searchTerms[] = $searchTerm;
-
-        return $this;
-    }
+//    public function addSearchTerm(\AppBundle\Entity\SearchTerm $searchTerm)
+//    {
+//        $this->searchTerms[] = $searchTerm;
+//
+//        return $this;
+//    }
 
     /**
      * Remove searchTerm
      *
      * @param \AppBundle\Entity\SearchTerm $searchTerm
      */
-    public function removeSearchTerm(\AppBundle\Entity\SearchTerm $searchTerm)
-    {
-        $this->searchTerms->removeElement($searchTerm);
-    }
+//    public function removeSearchTerm(\AppBundle\Entity\SearchTerm $searchTerm)
+//    {
+//        $this->searchTerms->removeElement($searchTerm);
+//    }
 
     /**
      * Get searchTerms
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getSearchTerms()
-    {
-        return $this->searchTerms;
-    }
+//    public function getSearchTerms()
+//    {
+//        return $this->searchTerms;
+//    }
 }

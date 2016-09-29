@@ -9,7 +9,8 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="sku")
  * @ORM\Entity
- * @ORM\Entity(repositoryClass="SkuRepository") @ORM\HasLifecycleCallbacks
+ * @ORM\Entity(repositoryClass="SkuRepository")
+
  */
 class Sku extends Common
 {
@@ -108,7 +109,7 @@ class Sku extends Common
     private $id;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\CampaignPerformance", mappedBy="sku")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\CampaignPerformance", mappedBy="sku" )
      */
     private $campaignPerformance;
 
@@ -223,7 +224,7 @@ class Sku extends Common
 
 
     /**
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Adgroups", mappedBy="sku")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Adgroups", mappedBy="sku", fetch="EXTRA_LAZY")
      */
     private $adgroups;
 
@@ -525,22 +526,22 @@ class Sku extends Common
      *
      * @return Sku
      */
-    public function addOrderStat(\AppBundle\Entity\OrderStats $orderStat)
-    {
-        $this->orderStats[] = $orderStat;
-
-        return $this;
-    }
+//    public function addOrderStat(\AppBundle\Entity\OrderStats $orderStat)
+//    {
+//        $this->orderStats[] = $orderStat;
+//
+//        return $this;
+//    }
 
     /**
      * Remove orderStat
      *
      * @param \AppBundle\Entity\OrderStats $orderStat
      */
-    public function removeOrderStat(\AppBundle\Entity\OrderStats $orderStat)
-    {
-        $this->orderStats->removeElement($orderStat);
-    }
+//    public function removeOrderStat(\AppBundle\Entity\OrderStats $orderStat)
+//    {
+//        $this->orderStats->removeElement($orderStat);
+//    }
 
     /**
      * @param mixed $brand

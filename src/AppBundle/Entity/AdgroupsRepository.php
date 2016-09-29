@@ -18,8 +18,8 @@ class AdgroupsRepository  extends EntityRepository {
                 ')
             ->setParameters(['campaignId' => $campaign->getId(), 'name' => $name] )
             ->setMaxResults(1)
-            ->useQueryCache(true)
-            ->useResultCache(true, 3600, $cachename);
+            ->useQueryCache(false)
+            ->useResultCache(false, 3600, $cachename);
         ;
         $model = $query->getOneOrNullResult();
         if(!$model) {

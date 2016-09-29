@@ -20,7 +20,7 @@ class SkuRepository  extends EntityRepository {
             ->setParameters(['accountId' => $account->getId(), 'sku' => $sku] )
             ->setMaxResults(1)
             ->useQueryCache(false)
-            ->useResultCache(true, 3600, $cachename);
+            ->useResultCache(false, 3600, $cachename);
         ;;
         $model = $query->getOneOrNullResult();
 
